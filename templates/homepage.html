@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+{% block homepage %}
+
+<div class="container">
+    <div class="row">
+        <div class="col training-col">
+            <p>
+                <button
+                    class="btn btn-primary"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target=".multi-collapse"
+                    aria-expanded="false"
+                    <!--
+                    aria-controls="multiCollapseExample1 multiCollapseExample2"
+                    --
+                >
+                    > View Trained Models
+                </button>
+            </p>
+            {% for model in models %}
+            <div class="row">
+                <div class="collapse multi-collapse" id="multiCollapseExample">
+                    <div class="card card-body">
+                        <strong>{{model['name']}}</strong>
+                        {{placeholder}}
+                        <a href="/model/{{model['name']}}" class="btn btn-dark">View {{model['name']}} Performance</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col testing-col">
+            <div class="container">
+                <button type="btn btn-primary">Scan Your X-Ray</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
