@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+{% block testing %}
+<div class="container col-md-6">
+    <div class="mb-5">
+        <label for="Image" class="form-label">Bootstrap 5 image Upload with Preview</label>
+        <input class="form-control" type="file" id="formFile" onchange="preview()">
+        <button onclick="clearImage()" class="btn btn-primary mt-3">Click me</button>
+    </div>
+    <img id="frame" src="" class="img-fluid" />
+    {{result}}
+    {% if result %}
+        <img src="{{ url_for('static',filename='temp.jpg')}}"/>
+    {% endif %}
+</div>
+{% endblock %}
