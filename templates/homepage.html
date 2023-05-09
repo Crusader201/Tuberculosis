@@ -23,14 +23,14 @@
                 <div class="collapse multi-collapse" id="multiCollapseExample">
                     <div class="card card-body">
                         <strong>{{model['name']}}</strong>
-                        {{placeholder}}
+                        {{model['Placeholder']}}
                         <a href="/model/{{model['name']}}" class="btn btn-dark">View {{model['name']}} Performance</a>
                     </div>
                 </div>
             </div>
             {% endfor %}
         </div>
-        <div class="col col-6 align-self-center testing-col">
+        <div class="col col-6 testing-col">
             <div class="container">
                 <a href="testing" class="btn btn-primary">Scan Your X-Ray</a>
             </div>
