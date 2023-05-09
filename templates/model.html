@@ -2,7 +2,42 @@
 {% block model %}
 
 <div class="container testing">
+    <div class="row">
+        <div class="col matrix-col">
+            <img src="{{ url_for('static',filename=model['name'] + '.png') }}" alt="Confusion matrix for model"/>
+        </div>
+        <div class="col stats-col">
+            <table class="table table-dark table-hover">
+                <thead>
+                    <tr>
+                        <td>Metric</td>
+                        <td>Value</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Accuracy</td>
+                        <td>{{model['Accuracy']}}</td>
+                    </tr>
 
+                    <tr>
+                        <td>Precision</td>
+                        <td>{{model['Precision']}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Recall</td>
+                        <td>{{model['Recall']}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>FMeasure</td>
+                        <td>{{model['FMeasure']}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
 {% endblock %}

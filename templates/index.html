@@ -6,6 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
 
+        <link rel="stylesheet" href="{{ url_for('static',filename='styles.css') }} "/>
+
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
             rel="stylesheet"
@@ -25,9 +27,31 @@
     </head>
     <body>
         {% block homepage %}
-
         {% endblock %}
         {% block model %}
         {% endblock %}
+        {% block testing %}
+        {% endblock %}
+        <script>
+            function preview() {
+                frame.src = URL.createObjectURL(event.target.files[0]);
+            }
+            function clearImage() {
+                const formData = new FormData()
+                formData.append('file',document.getElementById('formFile').files[0]);
+                document.getElementById('formFile').value = null;
+                frame.src = "";
+                fetch("/testing",{
+                    method:"POST",
+                    body:formData
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if(data.success == true)
+                        document.getElementById("result").src = "static/temp.jpg"
+                })
+
+            }
+        </script>
     </body>
 </html>
